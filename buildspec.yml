@@ -1,38 +1,38 @@
 version: 0.2
-env:
+#env:
   parameter-store:
     ARTIFACTORY_API_KEY: AKCp5fTQsWeHCJ2AiV2gHpjZAWvyfyvDoG2h9og1AhBW6tCgitTiQwpaZ7ryB8JbXBj2VxFER
 phases:
   install:
     commands:
       - echo Entering install phase...
-      - wget https://jcenter.bintray.com/org/apache/maven/apache-maven/3.3.9/apache-maven-3.3.9-bin.tar.gz 
-      - tar xzvf apache-maven-3.3.9-bin.tar.gz -C /opt/
-      - export PATH=/opt/apache-maven-3.3.9/bin:$PATH
-      - wget https://dl.bintray.com/jfrog/jfrog-cli-go/1.12.1/jfrog-cli-linux-amd64/jfrog
-      - chmod +x jfrog
+      #- wget https://jcenter.bintray.com/org/apache/maven/apache-maven/3.3.9/apache-maven-3.3.9-bin.tar.gz 
+      #- tar xzvf apache-maven-3.3.9-bin.tar.gz -C /opt/
+      #- export PATH=/opt/apache-maven-3.3.9/bin:$PATH
+      #- wget https://dl.bintray.com/jfrog/jfrog-cli-go/1.12.1/jfrog-cli-linux-amd64/jfrog
+      #- chmod +x jfrog
   pre_build:
     commands:
       - echo Entering pre_build phase...
-      - ./jfrog rt config --url http://54.222.250.15:8081/artifactory --user admin --apikey AKCp5fTQsWeHCJ2AiV2gHpjZAWvyfyvDoG2h9og1AhBW6tCgitTiQwpaZ7ryB8JbXBj2VxFER
-      - sed -i -e 's|ARTIFACTORY_USER|${ARTIFACTORY_USER}|g' settings.xml && sed -i -e 's|ARTIFACTORY_PASSWORD|${ARTIFACTORY_API_KEY}|g' settings.xml && sed -i -e 's|ARTIFACTORY_MVN_REPO|${ARTIFACTORY_MVN_REPO}|g' settings.xml
+      #- ./jfrog rt config --url http://54.222.250.15:8081/artifactory --user admin --apikey AKCp5fTQsWeHCJ2AiV2gHpjZAWvyfyvDoG2h9og1AhBW6tCgitTiQwpaZ7ryB8JbXBj2VxFER
+      #- sed -i -e 's|ARTIFACTORY_USER|${ARTIFACTORY_USER}|g' settings.xml && sed -i -e 's|ARTIFACTORY_PASSWORD|${ARTIFACTORY_API_KEY}|g' settings.xml && sed -i -e 's|ARTIFACTORY_MVN_REPO|${ARTIFACTORY_MVN_REPO}|g' settings.xml
   build:
     commands:
       - echo Entering build phase...
       - echo Build started on `date`
-      - mvn install
+     # - mvn install
       
   post_build:
     commands:
       - echo Entering post_build phase...
       - echo Build completed on `date`i
-      - ./jfrog rt u "*.jar" maven-pipeline-dev-local --build-name=codebuild-guestbook --build-number=$CODEBUILD_BUILD_ID --flat=false
-      - ./jfrog rt bce codebuild-guestbook $CODEBUILD_BUILD_ID
-      - ./jfrog rt bp codebuild-guestbook $CODEBUILD_BUILD_ID
+     # - ./jfrog rt u "*.jar" maven-pipeline-dev-local --build-name=codebuild-guestbook --build-number=$CODEBUILD_BUILD_ID --flat=false
+     # - ./jfrog rt bce codebuild-guestbook $CODEBUILD_BUILD_ID
+     # - ./jfrog rt bp codebuild-guestbook $CODEBUILD_BUILD_ID
 artifacts:
   type: zip
   files:
-    - 'appspec.yml'
-    - 'scripts/start_server'
-    - 'scripts/install_dependencies'
-    - 'target/guestbook-service-1.0.jar'
+   # - 'appspec.yml'
+   # - 'scripts/start_server'
+   # - 'scripts/install_dependencies'
+   # - 'target/guestbook-service-1.0.jar'
