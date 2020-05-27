@@ -1,7 +1,7 @@
 version: 0.2
 #env:
-  parameter-store:
-    ARTIFACTORY_API_KEY: AKCp5fTQsWeHCJ2AiV2gHpjZAWvyfyvDoG2h9og1AhBW6tCgitTiQwpaZ7ryB8JbXBj2VxFER
+  #parameter-store:
+    #ARTIFACTORY_API_KEY: AKCp5fTQsWeHCJ2AiV2gHpjZAWvyfyvDoG2h9og1AhBW6tCgitTiQwpaZ7ryB8JbXBj2VxFER
 phases:
   install:
     commands:
