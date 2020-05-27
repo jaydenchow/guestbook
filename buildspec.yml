@@ -26,7 +26,7 @@ phases:
     commands:
       - echo Entering post_build phase...
       - echo Build completed on `date`i
-      - ./jfrog rt u "*.jar" maven-pipeline-dev-local --build-name=codebuild-guestbook --build-number=$CODEBUILD_BUILD_ID --flat=false
+      - ./jfrog rt u "*.jar" maven-pipeline-dev-local --build-name=codebuild-guestbook --build-number=1.0.0 --flat=false
       - ./jfrog rt bce codebuild-guestbook $CODEBUILD_BUILD_ID
       - ./jfrog rt bp codebuild-guestbook $CODEBUILD_BUILD_ID
 artifacts:
