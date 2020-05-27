@@ -15,7 +15,7 @@ phases:
     commands:
       - echo Entering pre_build phase...
       - ./jfrog rt config --url http://54.222.250.15:8081/artifactory --user admin --apikey AKCp5fTQsWeHCJ2AiV2gHpjZAWvyfyvDoG2h9og1AhBW6tCgitTiQwpaZ7ryB8JbXBj2VxFER
-      #- sed -i -e 's|ARTIFACTORY_USER|${ARTIFACTORY_USER}|g' settings.xml && sed -i -e 's|ARTIFACTORY_PASSWORD|${ARTIFACTORY_API_KEY}|g' settings.xml && sed -i -e 's|ARTIFACTORY_MVN_REPO|${ARTIFACTORY_MVN_REPO}|g' settings.xml
+      - sed -i -e 's|ARTIFACTORY_USER|admin|g' settings.xml && sed -i -e 's|ARTIFACTORY_PASSWORD|AKCp5fTQsWeHCJ2AiV2gHpjZAWvyfyvDoG2h9og1AhBW6tCgitTiQwpaZ7ryB8JbXBj2VxFER|g' settings.xml && sed -i -e 's|ARTIFACTORY_MVN_REPO|maven-pipeline-dev-local|g' settings.xml
   build:
     commands:
       - echo Entering build phase...
