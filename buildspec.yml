@@ -11,6 +11,9 @@ phases:
       - export PATH=/opt/apache-maven-3.3.9/bin:$PATH
       - wget https://dl.bintray.com/jfrog/jfrog-cli-go/1.12.1/jfrog-cli-linux-amd64/jfrog
       - chmod +x jfrog
+      - tee /etc/docker/daemon.json << EOF
+        { "insecure-registries":["172.31.26.21:8081"] }
+        EOF
 
   pre_build:
     commands:
