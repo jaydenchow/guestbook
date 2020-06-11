@@ -14,7 +14,7 @@ phases:
       - tee /etc/docker/daemon.json << EOF
         { "insecure-registries":["172.31.26.21:8081"] }
         EOF
-      - service docker restart
+      - sudo service docker restart
       - docker info
 
   pre_build:
@@ -36,7 +36,13 @@ phases:
       - ./jfrog rt u "*.jar" maven-pipeline-dev-local --build-name=codebuild-guestbook --build-number=1.0.0 --flat=false
       - ./jfrog rt bce codebuild-guestbook $CODEBUILD_BUILD_ID
       - ./jfrog rt bp codebuild-guestbook $CODEBUILD_BUILD_ID
-artifacts:
+      
+  post_build:
+    commands:
+      - docker build -t 172.31.26.21:8081/docker-local/guestbook-microservices-k8s/guestbook-service:lastest .
+      - docker push 172.31.26.21:8081/docker-local/guestbook-microservices-k8s/guestbook-service:lastest
+
+#artifacts:
   type: zip
   files:
    # - 'appspec.yml'
