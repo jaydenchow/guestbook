@@ -42,10 +42,4 @@ phases:
       - docker build -t 172.31.26.21:8081/docker-local/guestbook-microservices-k8s/guestbook-service:lastest .
       - docker push 172.31.26.21:8081/docker-local/guestbook-microservices-k8s/guestbook-service:lastest
 
-#artifacts:
-  type: zip
-  files:
-   # - 'appspec.yml'
-   # - 'scripts/start_server'
-   # - 'scripts/install_dependencies'
-   # - 'target/guestbook-service-1.0.jar'
+
