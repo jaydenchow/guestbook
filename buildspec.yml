@@ -11,7 +11,6 @@ phases:
       - export PATH=/opt/apache-maven-3.3.9/bin:$PATH
       - wget https://dl.bintray.com/jfrog/jfrog-cli-go/1.12.1/jfrog-cli-linux-amd64/jfrog
       - chmod +x jfrog
-      - sudo -s
       - yum install docker
   pre_build:
     commands:
