@@ -14,7 +14,7 @@ phases:
       - tee /etc/docker/daemon.json << EOF
         { "insecure-registries":["172.31.26.21:8081"] }
         EOF
-      - sudo service docker restart
+      - service docker restart
       - docker info
 
   pre_build:
