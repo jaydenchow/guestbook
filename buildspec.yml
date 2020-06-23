@@ -18,7 +18,7 @@ phases:
   pre_build:
     commands:
       - echo Entering pre_build phase...
-      - ./jfrog rt config --url http://172.31.26.21:8081/artifactory --user admin --apikey AKCp5fTQsWeHCJ2AiV2gHpjZAWvyfyvDoG2h9og1AhBW6tCgitTiQwpaZ7ryB8JbXBj2VxFER
+      - jfrog rt config --url http://172.31.26.21:8081/artifactory --user admin --apikey AKCp5fTQsWeHCJ2AiV2gHpjZAWvyfyvDoG2h9og1AhBW6tCgitTiQwpaZ7ryB8JbXBj2VxFER
       #- sed -i -e 's|ARTIFACTORY_USER|admin|g' settings.xml && sed -i -e 's|ARTIFACTORY_PASSWORD|AKCp5fTQsWeHCJ2AiV2gHpjZAWvyfyvDoG2h9og1AhBW6tCgitTiQwpaZ7ryB8JbXBj2VxFER|g' settings.xml && sed -i -e 's|ARTIFACTORY_MVN_REPO|maven-pipeline-dev-local|g' settings.xml
   build:
     commands:
@@ -30,9 +30,9 @@ phases:
     commands:
       - echo Entering post_build phase...
       - echo Build completed on `date`i
-      - ./jfrog rt u "*.jar" maven-pipeline-dev-local --build-name=codebuild-guestbook --build-number=1.0.0 --flat=false
-      - ./jfrog rt bce codebuild-guestbook $CODEBUILD_BUILD_ID
-      - ./jfrog rt bp codebuild-guestbook $CODEBUILD_BUILD_ID
+      - jfrog rt u "*.jar" maven-pipeline-dev-local --build-name=codebuild-guestbook --build-number=1.0.0 --flat=false
+      - jfrog rt bce codebuild-guestbook $CODEBUILD_BUILD_ID
+      - jfrog rt bp codebuild-guestbook $CODEBUILD_BUILD_ID
       
   post_build:
     commands:
