@@ -6,6 +6,8 @@ phases:
   install:
     commands:
       - echo Entering install phase...
+      - nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://127.0.0.1:2375 --storage-driver=overlay2&
+      - timeout 15 sh -c "until docker info; do echo .; sleep 1; done"
       - docker info
       - wget https://jcenter.bintray.com/org/apache/maven/apache-maven/3.3.9/apache-maven-3.3.9-bin.tar.gz 
       - tar xzvf apache-maven-3.3.9-bin.tar.gz -C /opt/
