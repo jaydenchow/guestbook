@@ -29,8 +29,8 @@ phases:
         
   post_build:
     commands:
-      - docker build -t 172.31.26.21:8081/docker-local/guestbook-microservices-k8s/guestbook-service:$CODEBUILD_BUILD_NUM .
-      - jfrog rt dp 172.31.26.21:8081/docker-local/guestbook-microservices-k8s/guestbook-service:$CODEBUILD_BUILD_NUM docker-local --build-name=AWS-EKS-Guestbook --build-number=$CODEBUILD_BUILD_NUM
-      - jfrog rt bp AWS-EKS-Guestbook $CODEBUILD_BUILD_NUM
+      - docker build -t 172.31.26.21:8081/docker-local/guestbook-microservices-k8s/guestbook-service:$CODEBUILD_BUILD_NUMBER .
+      - jfrog rt dp 172.31.26.21:8081/docker-local/guestbook-microservices-k8s/guestbook-service:$CODEBUILD_BUILD_NUMBER docker-local --build-name=AWS-EKS-Guestbook --build-number=$CODEBUILD_BUILD_NUM
+      - jfrog rt bp AWS-EKS-Guestbook $CODEBUILD_BUILD_NUMBER
 
 
