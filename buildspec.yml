@@ -30,7 +30,7 @@ phases:
   post_build:
     commands:
       - docker build -t 172.31.26.21:8081/docker-local/guestbook-microservices-k8s/guestbook-service:10 .
-      - jfrog rt dp 172.31.26.21:8081/docker-local/guestbook-microservices-k8s/guestbook-service:10 --build-name=test-pipeline --build-number=10
+      - jfrog rt dp 172.31.26.21:8081/docker-local/guestbook-microservices-k8s/guestbook-service:10 docker-local --build-name=test-pipeline --build-number=10
       - jfrog rt bp test-pipeline 10
 
 
